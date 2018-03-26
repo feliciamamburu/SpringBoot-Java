@@ -1,0 +1,140 @@
+/* Custom Style-sheet for Grafreez bootstrap wireframes */
+
+section {
+	float: left;
+	padding: 30px 0;
+	width: 100%;
+}
+.card-block {
+	padding: 0.5rem 1.25rem;
+}
+i {
+	float: left;
+	margin-right: 10px;
+	margin-top: 5px;
+}
+.card-title {
+	margin-bottom: 7px;
+}
+.card {
+	margin: 15px 0;
+}
+.card img {
+	height: 150px;
+	width: 100%;
+}
+.rating {
+	float: left;
+	margin-bottom: 20px;
+	padding: 0 24%;
+	text-align: center;
+	width: 100%;
+}
+.rating i {
+	float: left;
+	font-size: 20px;
+	margin: 0 3px 0 0;
+	width: auto;
+}
+.card .price {
+	font-weight: bold;
+	font-size: 20px
+}
+.card .btn {
+	margin-bottom: 20px;
+}
+.product-block {
+	float: left;
+	width: 100%;
+	padding: 30px 0;
+      
+       
+}
+.side-product {
+	float: left;
+	width: 100%;
+	margin: 10px 0
+}
+.side-product .media {
+	margin-top: 15px;
+}
+.side-product h5 {
+	margin-bottom: 20px;
+}
+footer {
+	background: #3d3d3d;
+	color: #fff;
+	float: left;
+	width: 100%;
+	padding: 50px 0
+}
+footer li a {
+	color: #fff;
+	float: left;
+	padding-bottom: 15px;
+	width: 100%
+}
+.top-nav {
+	background: #563D7C;
+	border-radius: 0;
+}
+.top-nav a {
+	color: #fff
+}
+.top-nav .navbar-brand {
+	font-weight: 600;
+	font-size: 1.40rem;
+	padding: 0
+}
+.carousel {
+	float: left;
+	width: 100%;
+	height: 50vh;
+	background: #ccc;
+}
+.carousel-inner > .carousel-item {
+	padding: 25vh 80px;
+}
+aside {
+	float: left;
+	width: 100%;
+	padding: 20px 0
+}
+.cta-bg {
+	background: #563D7C;
+	color: #fff;
+}
+.cta-bg .btn {
+	margin-top: 30px;
+}
+.copyright {
+	min-height: 40px;
+	background: #000;
+	float: left;
+	width: 100%
+}
+.copyright p {
+	text-align: left;
+	color: #FFF;
+	padding: 10px 0;
+	margin-bottom: 0px;
+}
+.bottom_ul {
+	list-style-type: none;
+	float: right;
+	margin-bottom: 0px;
+}
+.bottom_ul li {
+	float: left;
+	line-height: 40px;
+}
+.bottom_ul li:after {
+	content: "/";
+	color: #FFF;
+	margin-right: 8px;
+	margin-left: 8px;
+}
+.bottom_ul li a {
+	color: #FFF;
+	font-size: 12px;
+}

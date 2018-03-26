@@ -1,0 +1,142 @@
+<style>
+    body {
+        background-color:#fffaf0;
+    }
+</style>
+
+
+
+<div class="row" >
+
+    <div class="panel-body">
+        <a href="#!/">
+            <img src="images/logo-netflorist.png"  width="300" height="200" alt="logo" />
+        </a>
+
+    </div>                          
+</div>
+
+<div class="container">
+    <div  class="text-center">
+        <h1 class="title">Customer Order</h1>
+        <hr />
+    </div>                                                                               
+    <div class="table-responsive table-bordered">          
+        <table class="table">
+
+            <thead style="background-color:pink">
+                <tr>
+                    <th>OrderID</th>
+                    <th>CustID</th>
+                    <!--                                                 <th>Bank id</th>-->
+                    <th>Order Date</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Status</th> 
+                    <th>Update Delivery Status</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr ng-repeat="order in customerOrder ">
+                    <td>{{order.orderId}}</td>
+                    <td>{{order.userId}}</td>
+                    <!--                            <td>{{order.bankDetailId}}</td>-->
+                    <td>{{order.orderedDate}}</td>
+                    <td>{{order.price | currency : "R"}}</td>
+                    <td>{{order.quantity}}</td>
+                    <td >{{order.status}}</td>
+                    <td>
+                        <select   ng-model="order.status" id="deliver" >
+                            <!--                            <option ng-repeat="orderstatus in status" value="{{orderstatus.name}}">{{orderstatus.name}}</option>-->
+
+                            <option >processing</option>
+
+                            <option >On the way</option>
+
+                            <option >Delivered</option>
+                        </select> 
+
+
+                        <button  ng-click="updateStatus(order.orderId, status)" class="btn btn-success">Update</button>
+                    </td>
+
+                    <td>
+                        <button  onclick="document.getElementById('d01').style.display = 'block'" class="btn btn-basic">Delivery Details</button>
+
+                        <!--                                         <button href="#!/delivery" class="btn btn-basic">Delivery Details</button>-->
+
+
+
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class="w3-container">
+    <div id="d01" class="w3-modal " >
+        <br/>
+        <div class="w3-modal-content w3-animate-zoom" >
+
+
+
+
+            <br/>
+            <div class="w3-container" >
+
+                <div class="container" style="background-color:pink; width:100%" >
+
+
+
+                    <div class="table-responsive ">          
+                        <table class="table" style="width:80%">
+
+                            <thead style="background-color:pink">
+                                <tr>
+                                    <th>DeliveryID</th>
+                                    <th>Province</th>
+                                    <th>City</th>
+                                    <th>House Number</th>
+                                    <th>Street</th>
+                                    <th>Update Delivery Status</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr ng-show="delivery in delivery">
+                                    <td>{{delivery.delivery_id}}</td>
+                                    <td>{{delivery.province}}</td>
+                                    <td>{{delivery.city}}</td>
+                                    <td>{{delivery.houseNo}}</td>
+                                    <td>{{delivery.street}}</td>
+
+                                    <td>
+                                        <select   ng-model="delivery.status" id="deliver" >
+                                           
+                                            <option ng-repeat="orderstatus in customerOrder" value="{{orderstatus.status}}">{{orderstatus.status}}</option>
+                                       
+                                        </select> 
+                                    </td>
+
+                                    <td>
+                                        <button  onclick="document.getElementById('d01').style.display = 'none'" class="btn btn-basic">Back</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
+
+                </div><br/>
+            </div>
+        </div>
+    </div>
+</div>

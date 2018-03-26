@@ -1,0 +1,48 @@
+<style>
+        body {
+            background-color:#fffaf0;
+        }
+        </style>
+
+
+
+<div class="row" >
+                 
+ <div class="panel-body">
+            <a href="#!/admin">
+            <img src="images/logo-netflorist.png"  width="300" height="200" alt="logo" />
+            </a>
+
+        </div>                          
+</div>
+
+<div class="container">
+    <div  class="text-center">
+            <h1 class="title">Users Avalable</h1>
+           <hr />
+        </div>                                                                               
+  <div class="table-responsive">          
+  <table class="table table-bordered">
+    <thead style="background-color:pink">
+      <tr>
+          <th>Id</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th>Username</th>
+        <th>Password</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="use in users">
+         <td>{{ use.id }}</td>
+        <td>{{ use.firstname }}</td>
+        <td>{{ use.lastname }}</td>
+        <td>{{ use.email }}</td>
+        <td>{{ use.username }}</td>
+        <td type="hidden">{{ use.password }}</td>
+    </tr>
+    </tbody>
+  </table>
+  </div>
+</div>

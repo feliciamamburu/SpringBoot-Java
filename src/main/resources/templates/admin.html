@@ -1,0 +1,182 @@
+
+<style>
+    body {
+        background-color:#fffaf0;
+    }
+    /*            .navbar-custom {
+        background-color:#D3D3D3;
+        border-color:#D3D3D3;
+    }*/
+    .navbar {
+        margin-bottom: 8px;
+        border-radius: 5px;
+    }
+</style>
+
+
+<div class="row" >
+
+    <div class="panel-body">
+        <a href="#!/admin">
+            <img src="images/logo-netflorist.png"  width="300" height="200" alt="logo" />
+        </a>
+
+    </div>
+
+    <nav class="navbar navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--                <a class="navbar-brand" href="#">Netflorist</a>-->
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="active"><a href="#">Home </a></li>
+                    <li><a href="#!/usersList">Users </a></li>
+                    <li><a href="#!/adminProducts">Manage Products </a></li>
+                    <li><a onclick="document.getElementById('f').style.display = 'block'">View Orders</a></li>
+                    <!--                    <li><a href="#!/addProduct">Add Products</a></li>-->
+                    <li><a href="#!/delivery">Delivery</a></li>
+                    <li><a href="#!/requestProduct">Request Product</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#!/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+
+    <div class="row content" style="margin-top: 0px;margin-left: 1050px">
+        <div class="col-sm-3" >
+            <div class="well" style="height: 100px;width: 180px;color:#245580 ">
+                <ul>
+                    <li><a href="#!/register"><span class="glyphicon glyphicon-pencil"></span>Add Admin</a></li>
+                    <li><a href="#!/register"><span class="glyphicon glyphicon-pencil"></span>Add Supplier</a></li>
+                    <li><a href="#!/register"><span class="glyphicon glyphicon-pencil"></span>Add Driver</a></li>
+
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container">
+
+        <div class="row">
+            <div  class="text-center">
+                <h1 class="title">Requested Flowers </h1>
+                <hr />
+            </div> 
+            <div class="product-block" ng-repeat="stock in stock" style="width:250px; height: 340px;font-weight: bold;color: #004579">
+                <div class="card text-xs-center">  <img ng-src="/stock/{{stock.image}}" style="width:100px; height: 80px;"/>
+                    <h5 class="card-title" > {{stock.name}}</h5>
+                    <h5> {{stock.description}}</h5>
+                    <h5 style="color:#E45E9D"> {{stock.category}}</h5>
+                    <p class="card-text price" style="font-weight: bold">{{stock.price | currency : "R"}}</p>
+
+
+                    <button  ng-click="redirectToView(stock)" type="submit" class="btn btn-basic"   value="addProduct" style="font-size: 12px;width: 150px;">Add to Product View</button>
+                    <button type="submit" class="btn btn-danger btn-xs delete"   ng-click="deleteStock(stock)" value="delete" style="font-size: 12px;width: 150px;">Delete</button>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+<div class="w3-container">
+    <div id="f" class="w3-modal " >
+
+        <div class="w3-modal-content w3-animate-zoom w3-card-4">
+
+            <br/>
+
+            <div class="w3-container">
+
+                <div class="container" style="background-color:pink; width:100%">
+                    <div  class="text-center">
+                        <h1 class="title">Customer Order</h1>
+                        <hr />
+                    </div>                                                                               
+                    <div class="table-responsive table-bordered">          
+                        <table class="table">
+
+                            <thead style="background-color:pink">
+                                <tr>
+                                    <th>OrderID</th>
+                                    <th>CustID</th>
+                                    <!--                                                 <th>Bank id</th>-->
+                                    <th>Order Date</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Status</th> 
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr ng-repeat="order in customerOrder | filter:search">
+                                    <td>{{order.orderId}}</td>
+                                    <td>{{order.custId}}</td>
+                                    <!--                            <td>{{order.bankDetailId}}</td>-->
+                                    <td>{{order.orderedDate}}</td>
+                                    <td>{{order.price | currency : "R"}}</td>
+                                    <td>{{order.quantity}}</td>
+                                    <td>{{order.status}}</td>
+
+                                    <!--                                    <td>
+                                                                            <div ng-model="status">
+                                                                                <select   id="deliver" >
+                                                                                    <option value="selected" ></option>
+                                                                                    <option value="pending">pending</option>
+                                                                                    <option value="delivered">delivered</option>
+                                                                                </select> 
+                                    
+                                    
+                                                                                <button  ng-click="updateStatus(orderId, status)" class="btn btn-success">Update</button>
+                                                                            </div>
+                                                                        </td>-->
+
+
+
+                                </tr>
+
+
+
+                                <tr >
+                                    <td>   </td>
+                                    <td>   </td>
+                                    <td>   </td>
+                                    <td>   </td>
+                                    <td>   </td>
+                                    <td>
+                                        <button  onclick="document.getElementById('f').style.display = 'none'" class="btn btn-basic">Back</button>
+
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div><br/>
+            </div>
+        </div> 
+    </div>
+</div>
+
+
+
+
+
+

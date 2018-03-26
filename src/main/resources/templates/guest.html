@@ -1,0 +1,197 @@
+<style>
+    body {
+        background-color:#fffaf0;
+
+    }
+/*    .navbar-custom {
+        background-color:#D3D3D3;
+        border-color:#D3D3D3;
+    }*/
+    .navbar {
+        margin-bottom: 8px;
+        border-radius: 5px;
+    }
+  .spinner {
+  width: 100px;
+}
+.spinner input {
+  text-align: right;
+}
+.input-group-btn-vertical {
+  position: relative;
+  white-space: nowrap;
+  width: 1%;
+  vertical-align: middle;
+  display: table-cell;
+}
+.input-group-btn-vertical > .btn {
+  display: block;
+  float: none;
+  width: 100%;
+  max-width: 100%;
+  padding: 8px;
+  margin-left: -1px;
+  position: relative;
+  border-radius: 0;
+}
+.input-group-btn-vertical > .btn:first-child {
+  border-top-right-radius: 4px;
+}
+.input-group-btn-vertical > .btn:last-child {
+  margin-top: -2px;
+  border-bottom-right-radius: 4px;
+}
+.input-group-btn-vertical i{
+  position: absolute;
+  top: 0;
+  left: 4px;
+}
+</style>  
+
+
+
+<div class="container">
+<div class="row" >
+    <div class="panel-body">
+        <a href="#!/home">
+            <img src="images/logo-netflorist.png"  width="300" height="200" alt="logo" />
+        </a>
+
+    </div>
+
+
+    <nav class="navbar navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               <a class="navbar-brand" href="#">Guest</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="active"><a href="#">Home</a></li>
+<!--                    <li><a href="#about">About us</a></li>
+                    <li><a href="#contact">Contact</a></li>-->
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a  onclick="document.getElementById('c1').style.display = 'block'"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart: {{cart.length}}</a></li>
+                   
+
+
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+</div>
+
+  <div class="row content" style="margin-top: 0px;margin-left: 1050px">
+    <div class="col-sm-3" >
+        <div class="well" style="height: 100px;width: 180px;color:#245580 ">
+             <ul >
+                <li> <a href="#!/register"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+            <li> <a href="#!/login"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+         </ul>
+        </div>
+    </div>
+    </div>  
+
+
+
+<div class="container">
+
+    <div class="product-block" ng-repeat="prod in products" style="width:250px; height: 340px;font-weight: bold;color: #004579">
+        <div class="card text-xs-center">  <img ng-src="/stock/{{prod.image}}" style="width:120px; height: 150px;"/>
+            <h5 class="card-title" > {{prod.name}}</h5>
+            <h5> {{prod.description}}</h5>
+            <h5 style="color:#E45E9D"> {{prod.category}}</h5>
+            <p class="card-text price" style="font-weight: bold">{{prod.price | currency : "R"}}</p>
+
+            <button type="submit" class="btn btn-basic" ng-click="addToCart(prod)()"  value="#!/register" style="font-size: 12px;width: 150px;">Add To Cart</button>
+        </div>
+    </div>
+    
+</div>
+</div>
+       
+
+<div class="w3-container">
+    <div id="c1" class="w3-modal " >
+
+        <div class="w3-modal-content w3-animate-zoom w3-card-4">
+            
+            <br/>
+
+            <div class="w3-container">
+                
+                <div class="container" style="background-color:pink; width:100%">
+                    <h5>Products in cart<span class="glyphicon glyphicon-shopping-cart">{{cart.length}}</span>
+                    </h5>
+
+                    <div class="table-responsive">          
+                        <table class="table" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Subtotal</th>
+                                    <th>Remove</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="prodInCart in cart">
+                                    <td>{{prodInCart.name}}<br/> <img ng-src="/products/{{prodInCart.image}}" alt="" style="width: 60px; height: 50px;"/>
+                                    </td>
+                                    <td>{{ prodInCart.price}}</td>
+                                    <td><div class="input-group spinner"><input class="form-control" type="number" min="0" max="10" steps="1" readonly="" value="{{ prodInCart.quantity }}" />
+                                            <div class="input-group-btn-vertical">
+                                                <button class="btn btn-default" type="button" ng-click="incrementQuantity(prodInCart)" ><i class="glyphicon glyphicon-triangle-top"></i></button>
+                                                <button class="btn btn-default" type="button" ng-click="removeProdCart(prodInCart)"><i class="glyphicon glyphicon-triangle-bottom"></i></button>
+                                          </div> </div></td>
+                                    <td>{{prodInCart.quantity * prodInCart.price | currency : "R" }}</td>
+                                    <td><button type="button" class="btn btn-danger" ng-click="remove(prodInCart)">
+                                            <span class="glyphicon glyphicon-remove" ></span>Remove
+                                        </button></td>
+                                </tr>
+
+                                <tr >
+                                    <td>   </td>
+                                    <td>   </td>
+                                    <td>   </td>
+                                    <td ng-show="total !== 0.00"><h4 style="font-weight: bolder">Total:</h4></td>
+                                    <td class="text-right"><h4 style="font-weight: bolder">{{total| currency : "R"}}</h4>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>   </td>
+                                    <td>   </td>
+                                    <td>   </td>
+                                    <td>
+                                        <button type="button" class="btn btn-default" onclick="document.getElementById('c1').style.display = 'none'">
+                                            <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                                        </button></td>
+                                    <td>
+                                        <button type="button" class="btn btn-success" ng-click="guests(prod)">
+                                            Checkout <span class="glyphicon glyphicon-play"></span>
+                                        </button></td>
+                                        <td><button class="btn btn-danger" ng-click="reload()"> Clear Cart</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>     
+                <br/>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

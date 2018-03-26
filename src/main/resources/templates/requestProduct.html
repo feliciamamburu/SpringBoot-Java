@@ -1,0 +1,90 @@
+<style>
+    body {
+        background-color:#fffaf0;
+    }
+
+</style>
+
+<div class="panel-body">
+    <a href="#!/admin">
+        <img src="images/logo-netflorist.png"  width="300" height="200" alt="logo" />
+    </a>
+
+</div>
+
+<div class="container" style="width: auto;padding-top: 50px; background-color: pink">
+    <div  class="text-center">
+        <h1 class="title">Products Out of Stock</h1>
+        <hr />
+    </div>  
+
+    <form name="stockForm" ng-controller="stockController" ng-submit="saveQuest()">
+        <div class="form-group row">
+            <div class="container-fluid" style="padding-left: 250px">
+
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="name" ng-model="name" placeholder="name" style="width: 350px" required=""/>
+                        </div>
+                    </div><br/><br/>
+
+                    <div class="form-group">
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="desc" ng-model="description" placeholder="description" style="width: 350px" required=""/>
+                        </div>
+                    </div><br/><br/>
+
+                    <!--                    <div class="form-group">
+                                            <div class="col-lg-10">
+                                                <input type="number" class="form-control" id="price" ng-model="price" placeholder="price esstimation" style="width: 350px" required=""/>
+                                            </div>
+                                        </div><br/><br/>-->
+
+                    <div class="form-group">
+                        <div class="col-lg-10">
+                            <input type="number" class="form-control" id="prod_quantity" ng-model="prod_quantity" placeholder="quantity" style="width: 350px" required=""/>
+                        </div>
+                    </div><br/><br/>
+
+
+                    <div class="form-group">
+                        <div class="col-lg-10">
+
+                            <div class="col-lg-10" style="padding-right:510px">
+
+                                <select class="form-control" id="cate" ng-model="category">
+                                    <option value="">----</option>
+                                    <option value="Valentine">Valentine</option>
+                                    <option value="Mother's day">Mother's Day</option>
+                                    <option value="Father's day">Father's Day</option>
+                                    <option value="Women's day">Women's Day</option>
+                                </select>
+
+                            </div>
+
+
+
+                        </div>
+                    </div><br/><br/>
+
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <label for="filePicker"><h4>Upload Photo</h4></label>
+                            <span class="glyphicon glyphicon-picture"></span><input type="file" id="fileItem" ng-model="filePickerImage" accept="stock/jpg"/>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="form-group" style="margin-left:600px">
+                <button class="btn btn-danger" id="submit" type="submit"  ><span class="glyphicon glyphicon-plus-sign"></span>Add Product</button>
+                <!--                                <a class="btn btn-basic" type="button" style="width: 100px" >
+                                                    <span class="glyphicon glyphicon-triangle-left" href="#!/supplier"></span> Back</a>-->
+
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,405 @@
+<style>
+    body {
+        background-color:#fffaf0;
+
+    }
+    /*    .navbar-custom {
+            background-color:#D3D3D3;
+            border-color:#D3D3D3;
+        }*/
+    .navbar {
+        margin-bottom: 8px;
+        border-radius: 5px;
+    }
+
+    .spinner {
+        width: 100px;
+    }
+    .spinner input {
+        text-align: right;
+    }
+    .input-group-btn-vertical {
+        position: relative;
+        white-space: nowrap;
+        width: 1%;
+        vertical-align: middle;
+        display: table-cell;
+    }
+    .input-group-btn-vertical > .btn {
+        display: block;
+        float: none;
+        width: 100%;
+        max-width: 100%;
+        padding: 8px;
+        margin-left: -1px;
+        position: relative;
+        border-radius: 0;
+    }
+    .input-group-btn-vertical > .btn:first-child {
+        border-top-right-radius: 4px;
+    }
+    .input-group-btn-vertical > .btn:last-child {
+        margin-top: -2px;
+        border-bottom-right-radius: 4px;
+    }
+    .input-group-btn-vertical i{
+        position: absolute;
+        top: 0;
+        left: 4px;
+    }
+</style>  
+
+
+
+
+
+
+<div class="row" >
+
+    <div class="panel-body">
+        <a href="#!/home">
+            <img src="images/logo-netflorist.png"  width="300" height="200" alt="logo" />
+        </a>
+
+    </div>
+
+
+    <nav class="navbar navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--                <a class="navbar-brand" href="#">Netflorist</a>-->
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="active"><a href="#">Home</a></li>
+                    <!--                    <li><a href="#about">About us</a></li>
+                                        <li><a href="#contact">Contact</a></li>-->
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a  onclick="document.getElementById('id01').style.display = 'block'"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart: {{cart.length}}</a></li>
+                    <li><a href="#!/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+</div>
+
+<div class="container">
+
+    <div class="product-block" ng-repeat="prod in products" style="width:250px; height: 340px;font-weight: bold;color: #004579">
+        <div class="card text-xs-center">  <img ng-src="/stock/{{prod.image}}" style="width:120px; height: 150px;"/>
+            <h5 class="card-title" > {{prod.name}}</h5>
+            <h5> {{prod.description}}</h5>
+            <h5 style="color:#E45E9D"> {{prod.category}}</h5>
+            <p class="card-text price" style="font-weight: bold">{{prod.price | currency : "R"}}</p>
+
+            <button type="submit" class="btn btn-basic" ng-click="addToCart(prod)()"  value="#!/register" style="font-size: 12px;width: 150px;">Add To Cart</button>
+        </div>
+    </div>
+    
+</div>
+  
+
+
+
+
+
+<div class="w3-container">
+    <div id="id01" class="w3-modal " >
+
+        <div class="w3-modal-content w3-animate-zoom w3-card-4">
+
+            <br/>
+
+            <div class="w3-container">
+
+                <div class="container" style="background-color:pink; width:100%">
+                    <h5>Products in cart<span class="glyphicon glyphicon-shopping-cart">{{cart.length}}</span>
+                    </h5>
+
+                    <div class="table-responsive ">          
+                        <table class="table" style="width:80%">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Subtotal</th>
+                                    <th>Remove</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="prodInCart in cart">
+                                    <td>{{prodInCart.name}}<br/> <img ng-src="/products/{{prodInCart.image}}" alt="" style="width: 60px; height: 50px;"/>
+                                    </td>
+                                    <td>{{ prodInCart.price}}</td>
+                                    <td><div class="input-group spinner"><input class="form-control" type="text" min="0" max="10" steps="1" readonly="" value="{{prodInCart.quantity}}" />
+                                            <div class="input-group-btn-vertical">
+                                                <button class="btn btn-default" type="button" ng-click="incrementQuantity(prodInCart)" ><i class="glyphicon glyphicon-triangle-top"></i></button>
+                                                <button class="btn btn-default" type="button" ng-click="removeProdCart(prodInCart)"><i class="glyphicon glyphicon-triangle-bottom"></i></button>
+                                            </div> </div></td>
+                                    <td>{{prodInCart.quantity * prodInCart.price | currency : "R" }}</td>
+
+
+                                    <td>
+                                        <button type="button" class="btn btn-danger" ng-click="remove(prodInCart)">
+                                            <span class="glyphicon glyphicon-remove" ></span>Remove
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <tr >
+                                    <td>   </td>
+                                    <td>   </td>
+                                    <td>   </td>
+                                    <td>   </td>
+
+                                    <td ng-show="total !== 0.00"><h4 style="font-weight: bolder">Total:</h4></td>
+                                    <td class="text-right"><h4 style="font-weight: bolder">{{total| currency : "R"}}</h4>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>   </td>
+                                    <td>   </td>
+                                    <td>   </td>
+                                    <td>   </td>
+
+                                    <td>
+                                        <button type="button" class="btn btn-default" onclick="document.getElementById('id01').style.display = 'none'">
+                                            <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                                        </button></td>
+                                    <td>
+                                        <button type="button" class="btn btn-success" onclick="document.getElementById('id04').style.display = 'block'">
+                                            Checkout <span class="glyphicon glyphicon-play"></span>
+                                        </button></td>
+                                    <td><button class="btn btn-danger" ng-click="reload()"> Clear Cart</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>     
+                <br/>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Delivery Details-->
+
+<div class="w3-container">
+    <div id="id04" class="w3-modal " >
+        <br/>
+        <div class="w3-modal-content w3-animate-zoom" >
+
+
+
+
+            <br/>
+            <div class="w3-container" >
+
+                <div class="container" style="background-color:pink; width:100%">
+                    <h4> Delivery Details<i class="fa fa-truck"></i></h4>
+                    <div class="row">
+                        <div class="col-sm-4" style="margin-top:5%">
+                            <div class="wrapper" style="margin-left: 10px;width: 500px">
+                                <label style="font-size: 12px;margin-left: 10px">Province: </label>
+                                <select  required="" ng-model="delivery.province">
+                                    <option value="" selected="" >--Select Province--</option>
+                                    <option value="gauteng">Gauteng</option>
+                                    <option value="limpopo">Limpopo</option>
+                                    <option value="kzn">KZN</option>
+                                    <option value="mpumalanga">Mpumalanga</option>
+                                    <option value="westernCape">Western Cape</option>
+                                </select>
+                            </div>
+
+
+                            <label style="font-size: 12px;margin-left: 30px">City: </label>
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="city" ng-model="delivery.city" placeholder="city" style="width: 340px"   required=""/>
+                                </div>
+                            </div>
+                        </div><br/>
+                        <div class="col-sm-4" style="margin-left:150px;margin-bottom:10%">
+                            <label style="font-size: 12px;margin-left: 30px">House number: </label>
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    <input type="number" class="form-control" id="houseNo" ng-model="delivery.houseNo" placeholder="house number" style="width: 340px"   required=""/>
+                                </div>
+                            </div>
+                            <br/>
+
+
+                            <label style="font-size: 12px;margin-left: 30px">Street Name: </label>
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    <input type="street" class="form-control" id="street" ng-model="delivery.street" placeholder="street" style="width: 340px"   required=""/>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+
+
+                        <button class="btn btn-danger" ng-click="deliver()" style="margin-left:70%">Save</button>
+                        <button type="button" class="btn btn-default" >
+                            <span onclick="document.getElementById('id04').style.display = 'none'" class="glyphicon glyphicon-triangle-left">Back</span>
+                        </button>
+
+
+                        <button type="button" class="btn btn-success" onclick="document.getElementById('id02').style.display = 'block'" >
+                            Checkout <span class="glyphicon glyphicon-play"></span>
+                        </button>
+
+
+                    </div>
+
+                </div><br/>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!--CheckOut-->
+<div class="w3-container" >
+    <div id="id02" class="w3-modal " >
+        <div class="w3-modal-content w3-animate-zoom" >
+
+           
+
+            <br/>
+            <div class="w3-container" >
+
+                <div class="container" style="background-color:pink; width:100%">
+                    <h4> Bank Details</h4>
+                    <div class="wrapper" style="margin-left: 30px;width: 340px">
+                        <label style="font-size: 12px;margin-left: 10px">Select Bank: </label>
+
+
+                        <select  ng-model="bank.bankType" >
+                            <option value="" selected="" ></option>
+                            <option value="capitec">Capitec</option>
+                            <option value="standard">Standard</option>
+                            <option value="nedbank">Nedbank</option>
+                            <option value="fnb">FNB</option>
+                            <option value="absa">ABSA</option>
+                        </select>
+                    </div>
+
+
+                    <label style="font-size: 12px;margin-left: 30px">Account Number: </label>
+                    <div class="form-group">
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="bankName" ng-model="bank.accNo" placeholder="09876545645" style="width: 340px"   required=""/>
+                        </div>
+                    </div><br/>
+
+                    <label style="font-size: 12px;margin-left: 30px"> Account Pin : </label>
+                    <div class="form-group">
+                        <div class="col-lg-10">
+                            <input type="password" class="form-control" id="password" ng-model="bank.pin" placeholder="09876545645" style="width: 340px"   required=""/>
+                        </div>
+                    </div><br/>
+
+                    <button type="button" class="btn btn-default" style="margin-left:70%">
+                        <span onclick="document.getElementById('id02').style.display = 'none'" class="glyphicon glyphicon-triangle-left">Back</span>
+                    </button>
+
+                    <button onclick="document.getElementById('id03').style.display = 'block'" class="btn btn-danger" ng-click="makePayment()">Pay Now
+                        <span class="glyphicon glyphicon-credit-card"></span></button><br/>
+
+                    <br/>
+
+                </div>
+
+            </div><br/>
+        </div>
+    </div>
+</div>
+
+<div class="w3-container">
+    <div id="id03" class="w3-modal " >
+        <div class="w3-modal-content w3-animate-zoom">
+
+            <!--            <img src="images/logo-netflorist.png"  width="300" height="200" alt="logo" />-->
+
+            <br/>
+            <div class="w3-container" >
+                <img src="images/Picture1.png"  width="300" height="200" alt="" />
+
+
+                <div class="container" style="background-color:pink; width:100%">
+                    <h1>
+                        <span class="glyphicon glyphicon-alert"></span>   {{user.username}} You are about to Finish Your Order Process
+                    </h1>
+
+                    <button type="button" class="btn btn-default" style="margin-left:70%">
+                        <span onclick="document.getElementById('id03').style.display = 'none'" class="glyphicon glyphicon-triangle-left">Back</span>
+                    </button>
+
+                    <button type="button"  class="btn btn-success"  ng-click="placeOrder()"  onclick="document.getElementById('i').style.display = 'block'" >
+                        Finish <span class="glyphicon glyphicon-play" ></span>
+                    </button>
+
+                </div><br/>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="w3-container">
+    <div id="i" class="w3-modal " >
+        <div class="w3-modal-content w3-animate-zoom">
+
+
+            <br/>
+            <div class="w3-container" >
+                <img src="images/Picture1.png"  width="300" height="200" alt="" />
+                <table class="table" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>OrderID</th>
+                            <th>CustID</th>
+                            <th>Bank id</th>
+                            <th>Order Date</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Status</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr ng-show="order in customerOrder">
+                            <td>{{order.orderId}}</td>
+                            <td>{{order.userId}}</td>
+                            <td>{{order.bank_detail_id}}</td>
+                            <td>{{order.orderedDate}}</td>
+                            <td>{{order.price | currency : "R" }}</td>
+                            <td>{{order.quantity}}</td>
+                            <td>{{order.status}}</td>
+
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

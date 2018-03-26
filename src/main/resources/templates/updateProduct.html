@@ -1,0 +1,82 @@
+<style>
+    body {
+        background-color:#fffaf0;
+    }
+</style>
+
+<div class="row" >
+
+    <div class="panel-body">
+        <a href="#!/adminProducts">
+            <img src="images/logo-netflorist.png"  width="300" height="200" alt="logo" />
+        </a>
+
+    </div>
+
+
+
+
+    <div class="container" style="background-color:pink; width:100%">
+
+        <div  class="text-center">
+            <h1 class="title">Update Product</h1>
+
+        </div> 
+        <form name="productForm" ng-controller="productController" ng-submit="updateProduct(editProduct)">
+            <div class="form-group row">
+                <div class="container-fluid" style="padding-left: 250px">
+
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-lg-10" >
+                                <input type="text" class="form-control" id="name" ng-model="editProduct.name"  placeholder="name"  style="width: 350px" required=""/>
+                            </div>
+                        </div><br/>
+
+                        <div class="form-group">
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="description" ng-model="editProduct.description" placeholder="description" style="width: 350px" required=""/>
+                            </div>
+                        </div><br/>
+
+                        <div class="form-group">
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="price" ng-model="editProduct.price" placeholder="price e.g R1.99" style="width: 350px" required=""/>
+                            </div>
+                        </div><br/>
+
+<!--                        <div class="form-group">
+                            <div class="col-lg-10">
+                                <input type="number" class="form-control" id="prod_quantity" ng-model="editProduct.prod_quantity" placeholder="quantity" style="width: 350px" required=""/>
+                            </div>
+                        </div><br/><br/>-->
+
+                        <div class="form-group">
+                            <div class="col-lg-10">
+                                <div class="col-lg-10" style="padding-right:510px">
+
+                                    <select class="form-control" id="category" ng-model="editProduct.category">
+                                        <option value="">----</option>
+                                        <option value="Valentine">Valentine</option>
+                                        <option value="Mother's day">Mother's Day</option>
+                                        <option value="Father's day">Father's Day</option>
+                                        <option value="Women's day">Women's Day</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div><br/>
+
+                    </div><br/>
+
+
+                </div>
+                <div class="form-group" style="margin-left:600px">
+                    <button class="btn btn-danger" id="submit" type="submit"  ><span class="glyphicon glyphicon-plus-sign" ng-click="updateProd(prod)"></span>Save Product</button>
+
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

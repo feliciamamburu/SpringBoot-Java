@@ -1,0 +1,87 @@
+span.glyphicon-triangle-bottom {
+ font-size: 0.8em;
+	}
+	
+	.icon-size{
+    font-size:2em; 
+    position:absolute;
+    top:29px;
+    right:-16px;
+	vertical-align:middle;
+}
+
+#dropdown1-content {
+    display: none;
+    position: absolute;
+    width: 1000px;
+	height: 700px;
+    box-shadow: 0px 9px 20px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+	
+}
+
+#droptext {
+    color:#B8094D;
+    font-size: 13px;
+    cursor: pointer;
+	font-weight:bolder;
+    position: relative;
+    display: inline-block;
+	
+}
+
+#dropdown1-content a {
+    padding: 5px 10px;
+    text-decoration: none;
+	color:#2D2D2D;
+	}
+	
+#dropdown1-content a:hover {
+	background-color:#f1f1f1;
+	color:#B8094D;
+	text-decoration:underline;
+}
+
+.dropdown1:hover #droptext {
+    background-color: white;
+} 
+
+.dropdown1:hover #dropdown1-content {
+    display: block;
+	background-color:#F2F2F2;
+}
+.containerL {
+    margin-left:560px;
+	margin-top:80px;    
+	font-size:30px;
+	color:#003768;
+	 width:500px;
+}
+
+.input {	
+	
+	height:30px;
+	margin-left:-20px;
+}
+
+
+#regbut {
+    background-color:#005999; 
+    font-weight:bold;
+    border: none;
+    color: white;
+    padding: 5px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin-top:10px;
+    cursor: pointer;
+    border-radius: 8px;
+    width:58%;
+    margin-left:72px;
+	
+}
+	#regbut:hover {
+       background-color: #004E87;
+    
+}

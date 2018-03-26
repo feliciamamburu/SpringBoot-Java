@@ -1,0 +1,72 @@
+<style>
+    body {
+        background-color:#fffaf0;
+    }
+
+    .form-login {
+        background-color: #CCC8C0;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        padding-left: 20px;
+        padding-right: 20px;
+        border-color:#d2d2d2;
+        margin-left: -60px;
+
+    }
+</style>
+
+<div class="panel-body">
+    <a href="#!/home">
+        <img src="images/logo-netflorist.png"  width="300" height="200" alt="logo" />
+    </a>
+
+</div>
+
+<div class="container">
+    <div class="row centered-form">
+
+
+        <form name="loginForm" class="form-horizontal"  ng-submit="login()" style="align-content: center;padding-left: 0px" >
+
+            <div class="col-md-offset-4 col-md-4">
+                <div class="form-login">
+                    <div  class="text-center">
+                        <h1 class="title">Welcome back..</h1>
+                        <hr />
+                    </div>
+                    <!--            <h4 class="form-login-heading">Welcome back.</h4>
+                                 <br/>-->
+
+                    <div class="form-group input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </span>
+                        <input type="text" id="inputusername" ng-model="username" class="form-control input-sm chat-input" placeholder="username" required="" autofocus=""/>
+                    </div>
+                    <br/>
+
+                    <div class="form-group input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-lock"></span>
+                        </span>   
+                        <input type="password" id="inputpassword" ng-model="password" class="form-control input-sm chat-input" placeholder="password" autocomplete="" required="" />
+                    </div>
+                    <br/>
+                    <div class="wrapper">
+                        <span class="group-btn" style="margin-left: 40px">     
+                            <a type="submit" class="btn btn-danger btn-md" ng-click="login()" value="#!/register">Login<span class="glyphicon glyphicon-log-in"></span></a>
+                        </span>
+                        
+                        <a style="margin-left: 50px">OR</a>
+
+                        <span class="group-btn btn" style="margin-left: 60px">     
+                            <a  href="#!/register" class="btn btn-danger btn-md" >Sign Up<span class="glyphicon glyphicon-pencil"></span></a>
+                        </span>
+
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>  
+</div>

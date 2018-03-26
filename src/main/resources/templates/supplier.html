@@ -1,0 +1,71 @@
+<style>
+    body {
+        background-color:#fffaf0;
+    }
+    /*            .navbar-custom {
+        background-color:#D3D3D3;
+        border-color:#D3D3D3;
+    }*/
+    .navbar {
+        margin-bottom: 8px;
+        border-radius: 5px;
+    }
+</style>
+
+<div class="row" >
+
+    <div class="panel-body">
+        <a href="#!/supplier">
+            <img src="images/logo-netflorist.png"  width="300" height="200" alt="logo"/>
+        </a>
+
+    </div>
+
+    <nav class="navbar navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--                <a class="navbar-brand" href="#">Netflorist</a>-->
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="active"><a href="#">Home </a></li>
+<!--                    <li><a href="#!/addProduct">Supply Products</a></li>-->
+                    <li><a href="#!/stock">Product Requested </a></li>
+                   
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#!/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+</div>
+
+<div class="jumbotron text-center" style="background-color:pink; width:100%">
+    <h1>Welcome to NetFlorist...</h1>
+    <p>Supply Management!!</p> 
+</div>
+
+
+   
+
+ <div class="container">
+    <div class="product-block" ng-repeat="stock in stock" style="width:250px; height: 340px;font-weight: bold;color: #004579">
+        <div class="card text-xs-center">  <img ng-src="/stock/{{stock.image}}" style="width:120px; height: 110px;"/>
+            <h5 class="card-title" > {{stock.name}}</h5>
+            <h5> {{stock.description}}</h5>
+            <h5 style="color:#E45E9D"> {{stock.category}}</h5>
+            <p class="card-text price" style="font-weight: bold">{{stock.price | currency : "R"}}</p>
+<!--            <button  ng-click="redirectToSupply(stock)" type="submit" class="btn btn-basic"   value="supplyProduct" style="font-size: 12px;width: 150px;">Supply Product</button>
+            <button type="submit" class="btn btn-danger btn-xs delete"   ng-click="deleteStock(stock)" value="delete" style="font-size: 12px;width: 150px;">Delete</button>-->
+
+        </div>
+    </div>
+</div>

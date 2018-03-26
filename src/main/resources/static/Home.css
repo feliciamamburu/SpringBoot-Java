@@ -1,0 +1,179 @@
+
+#ul-home{
+	font-weight:bold;
+	word-spacing:0.3em;
+	font-size:15px;
+	/*@font-face{font-family:"pnpFont";
+        src: local("?"), url("fonts/CachetStd-Book.woff")
+        format("woff"), url("fonts/CachetStd-Book.otf")
+        format("opentype"), url("fonts/CachetStd-Book.svg#CachetStd-Book")
+        format("svg");
+        }*/
+    }
+
+	
+
+span.glyphicon-search{
+	margin-bottom:0px;
+	font-size:20px;
+	
+}
+/*
+.input-group-addon{
+	
+	font-size:16px;
+	
+	
+}*/
+
+
+ /* Dropdown Button */
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 0px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 185px;
+    box-shadow: 0px 9px 20px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: #3C3C3C;
+    padding: 5px 10px;
+    text-decoration: none;
+	font-family:cursive;
+	font-weight:bold;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+	background-color:#f1f1f1;
+	color:#B9094D;
+	text-decoration:none;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+} 
+
+.topDrop {
+    margin: 0px 0 0 0;
+    clear: both;
+    float: left;
+    height: 80px;
+    padding: 0px 0px 0px 0px;
+    width: 110%;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -o-border-radius: 0;
+    -ms-border-radius: 0;
+    background-color: #004579;
+}
+
+.topDrop_register {
+    margin: 0px 0 0 0;
+    clear: both;
+    float: left;
+    height: 80px;
+    padding: 0px 0px 0px 0px;
+    inline-box-align: initial;
+    width: 110%;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -o-border-radius: 0;
+    -ms-border-radius: 0;
+    background-color: #004579;
+}
+
+
+#first-slider .main-container {
+  padding: 0;
+}
+
+#first-slider .carousel .item {
+  min-height: 425px; 
+  height: 100%;
+  width:100%;
+}
+
+#first-slider .carousel-indicators li {
+    width: 14px;
+    height: 14px;
+    background-color: rgba(255,255,255,.4);
+  border:none;
+}
+
+
+#first-slider .carousel-indicators .active{
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+  border:none;
+}
+
+
+.carousel-fade .carousel-inner .item {
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+}
+
+/********************************/
+/*       Slides backgrounds     */
+/********************************/
+#first-slider .slide1 {
+    background-color:red;
+      background-size: cover;
+    background-repeat: no-repeat;
+}
+#first-slider .slide2 {
+  background-image: url("images/OLS-Banner-50th-welcome.jpg");
+      background-size: cover;
+    background-repeat: no-repeat;
+}
+#first-slider .slide3 {
+  background-image: url('images/Birthday_4_OLS_HP_Banner_01.jpg');
+      background-size: cover;
+    background-repeat: no-repeat;
+}
+#first-slider .slide4 {
+  background-image: url(images/WK21-Online-Shop-Banner.jpg);
+      background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#first-slider .slide5 {
+  background-image: url(images/Heaters_OLS_HP_Banner_01.jpg);
+      background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#footer-list a{
+	color:black;
+	}
+

@@ -1,0 +1,28 @@
+<style>
+    body {
+        background-color:#fffaf0;
+    }
+  
+</style>
+
+<div class="panel-body">
+        <a href="#!/supplier">
+            <img src="images/logo-netflorist.png"  width="300" height="200" alt="logo" />
+        </a>
+    <button class="glyphicon glyphicon-refresh" ng-click="reload(stock)"></button>
+</div>
+
+
+   <div class="container">
+    <div class="product-block" ng-repeat="stock in stock" style="width:250px; height: 340px;font-weight: bold;color: #004579">
+        <div class="card text-xs-center">  <img ng-src="/stock/{{stock.image}}" style="width:120px; height: 110px"/>
+            <h5 class="card-title" > {{stock.name}}</h5>
+            <h5> {{stock.description}}</h5>
+            <h5 style="color:#E45E9D"> {{stock.category}}</h5>
+            <p class="card-text price" style="font-weight: bold">{{stock.price | currency : "R"}}</p>
+            <button  ng-click="redirectToSupply(stock)" type="submit" class="btn btn-basic"   value="supplyProduct" style="font-size: 12px;width: 150px;">Supply Product</button>
+<!--            <button type="submit" class="btn btn-danger btn-xs delete"   ng-click="deleteStock(stock)" value="delete" style="font-size: 12px;width: 150px;">Delete</button>-->
+
+        </div>
+    </div>
+    </div>

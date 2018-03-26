@@ -1,0 +1,106 @@
+<style>
+    body {
+        background-color:#fffaf0;
+    }
+    .centered-form{
+        margin-top: 10px;
+    }
+
+    .form-signin{
+        background-color: #CCC8C0;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        padding-left: 20px;
+        padding-right: 20px;
+        /*        border-radius: 10px;*/
+        /*        border-color:#d2d2d2;*/
+        border-width: 5px;
+        /*        box-shadow:0 1px 0 #cfcfcf;*/
+        /*        max-width: 400px;*/
+        margin-left: 50px;
+
+    }
+
+</style>
+
+<div class="panel-body">
+    <a href="#!/home">
+        <img src="images/logo-netflorist.png"  width="300" height="200" alt="logo" />
+    </a>
+
+</div>
+
+<div class="container" autocomplete="">
+    <div class="row main">
+
+        <form name="registerForm" class="form-horizontal main-center "  ng-submit="register()" style="align-content: center;padding-left: 0px" >
+           
+            <div class="col-md-offset-3 col-md-5"> 
+            
+            <div class="form-signin">
+                <div  class="text-center">
+                    <h1 class="title">Please Sign Up Here!</h1>
+                    <hr />
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+
+                            <input type="text" class="form-control" id="name" ng-model="user.firstname" placeholder="firstname" style="width: 300px;height: 30px" required="" autofocus=""/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-5 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input type="text" class="form-control" id="surname" ng-model="user.lastname" placeholder="lastname" style="width: 300px;height: 30px" required=""/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" >
+                    <div class="col-md-5 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                            <input type="email" class="form-control" id="email" ng-model="user.email" placeholder="name@example.com" style="width: 300px;height: 30px" required=""/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-5 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input type="text" class="form-control" id="username" ng-model="user.username" placeholder="username" style="width: 300px;height: 30px" required=""/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-5 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input type="password" class="form-control" id="password" ng-model="user.password" placeholder="password" style="width: 300px;height: 30px" required=""/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-left: 5px">
+                    <div class="col-lg-9" >
+                        <button class="btn btn-danger" id="submit" type="submit" style="width: 350px;height: 30px;font-size: 15px; margin-left: -20px" >Register</button>
+                        <br/>
+                        <a style="color:#004579;font-size: 12px;margin-left: 100px" >Do you have an Account??</a >
+                        <br/>
+                        <a href="#!/login"  style="color:#004579;font-size: 12px;margin-left: 140px" data-toggle="tooltip" title="Log in">Login Here!</a>
+                    </div>
+
+                </div>
+            </div> 
+                </div> 
+        </form>
+
+    </div>
+</div>

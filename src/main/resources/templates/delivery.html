@@ -1,0 +1,59 @@
+
+<style>
+    body {
+        background-color:#fffaf0;
+    }
+
+</style>
+
+
+
+
+<div class="panel-body">
+    <a href="#!/admin">
+        <img src="images/logo-netflorist.png"  width="300" height="200" alt="logo" />
+    </a>
+
+</div>
+
+
+<div class="container" style="background-color:pink; width:100%" >
+
+
+
+    <div class="table-responsive ">          
+        <table class="table" style="width:80%">
+
+            <thead style="background-color:pink">
+                <tr>
+                    <th>DeliveryID</th>
+                    <th>Province</th>
+                    <th>City</th>
+                    <th>House Number</th>
+                    <th>Street</th>
+                    <th>Status</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr ng-repeat="delivery in delivery">
+                    <td>{{delivery.delivery_id}}</td>
+                    <td>{{delivery.province}}</td>
+                    <td>{{delivery.city}}</td>
+                    <td>{{delivery.houseNo}}</td>
+                    <td>{{delivery.street}}</td>
+
+                    <td>
+                        <select   ng-model="delivery.status" id="deliver" >
+                            <option ng-repeat="orderstatus in customerOrder" value="{{orderstatus.status}}">{{orderstatus.status}}</option>
+                        </select> 
+                        <button  ng-click="deleteSt(delivery_id)" class="btn btn-success">Delete</button>
+                    </td>
+
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
