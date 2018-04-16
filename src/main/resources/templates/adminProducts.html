@@ -18,14 +18,7 @@
 
 </div>
 <div class="container">
-<!--    <div class="form-group">
-        <a onclick="document.getElementById('im01').style.display = 'block'" class="btn btn-link"  style="width: 200px;height: 30px;font-size: 15px; margin-left: 940px; margin-bottom: 10px" >
-            <span class="glyphicon glyphicon-plus-sign"></span> Add products</a>
-        <br/>
-                <a onclick="document.getElementById('im03').style.display = 'block'" class="btn btn-link" style="width: 200px;height: 30px;font-size: 15px; margin-left: 920px; margin-bottom: 10px"><span class="glyphicon glyphicon-pencil"></span>Update Category</a>
-                <br/>
-
-    </div>-->
+   
     <div  class="text-center">
         <h1 class="title">Products Available </h1>
 
@@ -41,11 +34,12 @@
                     <th>Name</th>
                     <th>Description</th>
                     <th>Price</th>
-                     <th>Category</th>
+                    <th>Quantity</th>
+<!--                    <th>BatchQuantity</th>-->
+<!--                    <th>Category</th>-->
                     <th>Edit</th>
-<!--<th>Add</th>-->
                     <th>Delete</th>
-                    
+
                     <th><a class="glyphicon glyphicon-refresh" ng-click="reload()"></a></th>
                 </tr>
             </thead>
@@ -56,11 +50,15 @@
                     </td>
                     <td>{{ prod.description }}</td>
                     <td>{{ prod.price | currency : "R" }}</td>
-                       <td>{{ prod.category }}</td>
+                    <td>{{ prod.prod_quantity- prod.quantity}}
+                    </td>
+<!--                    <td>{{ prod.batchQuantity}}
+                    </td>-->
+<!--                    <td>{{ prod.category }}</td>-->
                     <td>
                         <button  ng-click="redirectToUpdate(prod)" class="btn btn-primary btn-xs" ><span class="glyphicon glyphicon-pencil"></span>Update</button>
                     </td>
-<!--                    <td><p data-placement="top" data-toggle="tooltip" title="Add"><button class="btn btn-danger btn-xs delete" data-title="Add" data-target="#add" ><span class="glyphicon glyphicon-plus-sign"></span></button></p></td>-->
+
                     <td><button class="btn btn-danger btn-xs delete"  ng-click="deleteProd(prod)" ><span class="glyphicon glyphicon-trash"></span>Delete</button></td>
 
                 </tr>
@@ -73,81 +71,9 @@
 
 
 
-<!--update-->
 
-<div class="w3-container">
-    <div id="im02" class="w3-modal " >
 
-        <div class="w3-modal-content w3-animate-zoom w3-card-4">
-            <br/>
-            <div class="w3-container">
-                <div class="container" style="background-color:pink; width:100%">
 
-                    <div  class="text-center">
-                        <h1 class="title">Edit Product</h1>
-
-                    </div> 
-                    <form name="productForm" ng-controller="productController" ng-submit="updateProduct(newProdData)">
-                        <div class="form-group row">
-                            <div class="container-fluid" style="padding-left: 250px">
-
-                                <div class="row">
-                                    <div class="form-group">
-                                        <div class="col-lg-10" >
-                                            <input type="text" class="form-control" id="name" ng-model="editProduct.name"  placeholder="name" ng-value="{{prod.name}}" style="width: 350px" required=""/>
-                                        </div>
-                                    </div><br/>
-
-                                    <div class="form-group">
-                                        <div class="col-lg-10">
-                                            <input type="text" class="form-control" id="description" ng-model="editProduct.description" placeholder="description" style="width: 350px" required=""/>
-                                        </div>
-                                    </div><br/>
-
-                                    <div class="form-group">
-                                        <div class="col-lg-10">
-                                            <input type="text" class="form-control" id="price" ng-model="editProduct.price" placeholder="price e.g R1.99" style="width: 350px" required=""/>
-                                        </div>
-                                    </div><br/>
-                                    
-                                    <div class="form-group">
-                                        <div class="col-lg-10">
-<!--                                            <input type="text" class="form-control" id="category" ng-model="editProduct.group" placeholder="group" style="width: 350px" required=""/>-->
-                                                                        <div class="col-lg-10" style="padding-right:510px">
-<!--                                                                       <label for="tech" class="col-sm-3 control-label"><h5>Select a Category</h5></label>
-                                                                        <select class="form-control" id="group" ng-model="group">
-                                                                            <option ng-repeat="prod in group"value="{{prod.group}}">{{prod.group}}</option>
-                                                                        </select>-->
-                                    <select class="form-control" id="category" ng-model="editProduct.category">
-                                        <option value="">----</option>
-                                        <option value="Valentine">Valentine</option>
-                                        <option value="Mother's day">Mother's Day</option>
-                                          <option value="Father's day">Father's Day</option>
-                                            <option value="Women's day">Women's Day</option>
-                                    </select>
-
-                                </div>
-                                        
-                                        </div>
-                                    </div><br/>
-                                </div><br/>
-                                
-
-                            </div>
-                            <div class="form-group" style="margin-left:600px">
-                                <button class="btn btn-danger" id="submit" type="submit"  ><span class="glyphicon glyphicon-plus-sign" ng-click="updateProd(prod)"></span>Save Product</button>
-                                <a onclick="document.getElementById('im02').style.display = 'none'" class="btn btn-basic" type="button" style="width: 100px" >
-                                    <span class="glyphicon glyphicon-triangle-left"></span> Back</a>
-
-                            </div>
-                        </div>
-                    </form>
-
-                </div><br/>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 

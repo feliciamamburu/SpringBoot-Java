@@ -34,7 +34,7 @@
                     <th>Quantity</th>
                     <th>Status</th> 
                     <th>Update Delivery Status</th>
-
+                    <th>View Location</th>
                 </tr>
             </thead>
             <tbody>
@@ -59,13 +59,12 @@
                         </select> 
 
 
-                        <button  ng-click="updateStatus(order.orderId, status)" class="btn btn-success">Update</button>
+                        <button  ng-click="updateStatus(status)" class="btn btn-success">Update</button>
                     </td>
 
                     <td>
                         <button  onclick="document.getElementById('d01').style.display = 'block'" class="btn btn-basic">Delivery Details</button>
 
-                        <!--                                         <button href="#!/delivery" class="btn btn-basic">Delivery Details</button>-->
 
 
 
@@ -103,7 +102,7 @@
                                     <th>City</th>
                                     <th>House Number</th>
                                     <th>Street</th>
-                                    <th>Update Delivery Status</th>
+                                    <th>Updated Status</th>
 
                                 </tr>
                             </thead>
@@ -116,13 +115,9 @@
                                     <td>{{delivery.houseNo}}</td>
                                     <td>{{delivery.street}}</td>
 
-                                    <td>
-                                        <select   ng-model="delivery.status" id="deliver" >
-                                           
-                                            <option ng-repeat="orderstatus in customerOrder" value="{{orderstatus.status}}">{{orderstatus.status}}</option>
-                                       
-                                        </select> 
-                                    </td>
+                                    <td><div ng-repeat="status in customerOrder">{{status.street}}</div></td>
+
+
 
                                     <td>
                                         <button  onclick="document.getElementById('d01').style.display = 'none'" class="btn btn-basic">Back</button>

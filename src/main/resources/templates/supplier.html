@@ -35,9 +35,9 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-left">
                     <li class="active"><a href="#">Home </a></li>
-<!--                    <li><a href="#!/addProduct">Supply Products</a></li>-->
-                    <li><a href="#!/stock">Product Requested </a></li>
-                   
+                    <!--                    <li><a href="#!/addProduct">Supply Products</a></li>-->
+                    <!--                    <li><a href="#!/stock">Product Requested </a></li>-->
+
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#!/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
@@ -48,24 +48,50 @@
     </nav>
 </div>
 
-<div class="jumbotron text-center" style="background-color:pink; width:100%">
-    <h1>Welcome to NetFlorist...</h1>
+<div class="jumbotron text-center" style="background-color:pink; width:100%;height:-10%">
+    <h2>Welcome to NetFlorist...</h2>
     <p>Supply Management!!</p> 
 </div>
 
 
-   
 
- <div class="container">
-    <div class="product-block" ng-repeat="stock in stock" style="width:250px; height: 340px;font-weight: bold;color: #004579">
-        <div class="card text-xs-center">  <img ng-src="/stock/{{stock.image}}" style="width:120px; height: 110px;"/>
-            <h5 class="card-title" > {{stock.name}}</h5>
-            <h5> {{stock.description}}</h5>
-            <h5 style="color:#E45E9D"> {{stock.category}}</h5>
-            <p class="card-text price" style="font-weight: bold">{{stock.price | currency : "R"}}</p>
-<!--            <button  ng-click="redirectToSupply(stock)" type="submit" class="btn btn-basic"   value="supplyProduct" style="font-size: 12px;width: 150px;">Supply Product</button>
-            <button type="submit" class="btn btn-danger btn-xs delete"   ng-click="deleteStock(stock)" value="delete" style="font-size: 12px;width: 150px;">Delete</button>-->
+<!--Quantity on Supplier-->
+
+<div class="container">
+
+    <div class="product-block" ng-repeat="prod in products" style="width:250px; height: 340px;font-weight: bold;color: #004579">
+        <div class="card text-xs-center">  <img ng-src="/stock/{{prod.image}}"  style="width:120px; height: 150px;"/>
+            <!--            <h5 class="card-title" > {{prod.name}}</h5>
+                        <h5> {{prod.description}}</h5>-->
+            <!--            <h5 style="color:#E45E9D"> {{prod.category}}</h5>-->
+            <!--            <p class="card-text price" style="font-weight: bold">{{prod.price | currency : "R"}}</p>-->
+
+
+            <!--Quantity-->
+            <span>
+                <div class="input-group spinner" >
+
+               
+                    Add to batch:   <input  class="form-control" type="text" readonly=""
+                                           step="0"  ng-model="prod.prod_quantity" value="{{prod.prod_quantity}}" />
+
+                </div>
+                <h5 type="number" ng-model="prod.batchQuantity"  value="{{prod.batchQuantity}}"> Batches: {{prod.batchQuantity}}</h5>
+
+              
+                                    <h5 type="number"   style="color: red">Thresh hold Quantity: {{prod.threshholdQty}}</h5>
+
+            </span>
+
+            <button type="button" class="btn btn-success " ng-click ="updateQuantity(prod)"  >Update Quantity</button>
+            <!--Quantity-->
+
+
 
         </div>
     </div>
+
 </div>
+
+
+

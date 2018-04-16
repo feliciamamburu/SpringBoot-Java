@@ -21,47 +21,24 @@ public class DeliveryService {
 
     @Autowired
     private DeliveryRepository delRep;
-    private String delivery_id;
 
-    public List<Delivery> ListDelivery() {
+//    public List<Delivery> ListDelivery() {
+//        List<Delivery> allDelivery = new ArrayList<>();
+//        delRep.findAll().forEach(allDelivery::add);
+//        return allDelivery;
+//    }
+
+    public void saveDelivery(Delivery deliveryId) {
+        delRep.save(deliveryId);
+    }
+
+    
+      public List<Delivery> getDelivery() {
         List<Delivery> allDelivery = new ArrayList<>();
         delRep.findAll().forEach(allDelivery::add);
         return allDelivery;
     }
 
-    public void saveDelivery(Delivery delivery) {
-        delRep.save(delivery);
-    }
-    
   
-    
-     public String deleteSt(String delivery_id) {
-        
-        List<Delivery> list = new ArrayList<>();
-        
-        
-        Iterable<Delivery> findAll = delRep.findAll();
-        findAll.forEach(list::add);
-        
-        int sizeBefore = list.size();
-        
-        Delivery status =delRep.findByStatus(delivery_id);
-        
-        delRep.delete(status);
-        
-        Iterable<Delivery> findAllAfter = delRep.findAll();
-        findAllAfter.forEach(list::add);
-        
-        int sizeAfter = list.size();
-        
-        if(sizeAfter <sizeBefore ){
-            return "Deleted";
-        }else{
-            return "Fail to delete";
-        }
-    }
 
-   
-    
-    
 }

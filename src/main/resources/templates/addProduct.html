@@ -11,7 +11,7 @@
 
 
     <div class="panel-body">
-        <a href="#!/supplier">
+        <a href="#!/admin">
             <img src="images/logo-netflorist.png"  width="300" height="200" alt="logo" />
         </a>
 
@@ -20,7 +20,7 @@
 </div>
 
 
-<div class="container" style="width: auto;padding-top: 50px; background-color: pink">
+<div class="container" style=" background-color: pink;height:70%">
     <div  class="text-center">
         <h1 class="title">Add Products</h1>
         <hr />
@@ -33,37 +33,62 @@
                 <div class="row">
                     <div class="form-group">
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" id="prod_name" ng-model="name" placeholder="name" style="width: 350px" required=""/>
+                           <p> Product Name: <input type="text" class="form-control" id="prod_name" ng-model="name" placeholder="name" style="width: 350px" required=""/>
+                        
+                           </p></div>
+                    </div><br/><br/>
+
+                    <div class="form-group">
+                        <div class="col-lg-10">
+                        <p> Description:     <input type="text" class="form-control" id="description" ng-model="description" placeholder="description" style="width: 350px" required=""/>
+                        </p>
                         </div>
                     </div><br/><br/>
 
                     <div class="form-group">
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" id="description" ng-model="description" placeholder="description" style="width: 350px" required=""/>
+                      <p> Price:       <input type="text" class="form-control" id="price" ng-model="price" placeholder="price e.g R1.99" style="width: 350px" required=""/>
+                       
+                      </p>
                         </div>
-                    </div><br/><br/>
+                    </div><br/>
+
+
 
                     <div class="form-group">
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" id="price" ng-model="price" placeholder="price e.g R1.99" style="width: 350px" required=""/>
+                            <input type="hidden" class="form-control" id="prod_quantity" ng-model="prod_quantity" placeholder="quantity" style="width: 350px" required=""/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-10">
+                       <p> Thresh Hold:     <input type="number" class="form-control" id="prod_quantity" ng-model="threshholdQty" placeholder="threshholdQty" style="width: 350px" required=""/>
+                        
+                       </p>
                         </div>
                     </div><br/><br/>
+                    
+                    <div class="form-group">
+                        <div class="col-lg-10">
+                            <input type="hidden" class="form-control" id="prod_quantity" ng-model="batchQuantity" placeholder="batchQuantity" style="width: 350px" required=""/>
+                        </div>
+                    </div>
 
-
+  <div class="form-group">
+                        <div class="col-lg-10">
+                            <input type="number" steps="1" max="1" min="1" value="1" class="form-control" id="prod_quantity" ng-model="bQuantity" placeholder="batch" style="width: 350px" required=""/>
+                        
+                        </div>
+                    </div>
 
 <!--                    <div class="form-group">
                         <div class="col-lg-10">
-                            <input type="number" class="form-control" id="prod_quantity" ng-model="prod_quantity" placeholder="quantity" style="width: 350px" required=""/>
-                        </div>
-                    </div><br/><br/>-->
-
-                    <div class="form-group">
-                        <div class="col-lg-10">
 
                             <div class="col-lg-10" style="padding-right:510px">
-                               
+
                                 <select class="form-control" id="category" ng-model="category">
-                                    <option value="">----</option>
+                                    <option value=""></option>
                                     <option value="Valentine">Valentine</option>
                                     <option value="Mother's day">Mother's Day</option>
                                     <option value="Father's day">Father's Day</option>
@@ -75,7 +100,7 @@
 
 
                         </div>
-                    </div><br/><br/>
+                    </div><br/><br/>-->
 
                 </div>
 
@@ -89,7 +114,7 @@
 
                 </div>
             </div>
-            <div class="form-group" style="margin-left:600px">
+            <div class="form-group" style="margin-left:500px">
                 <button class="btn btn-danger" id="submit" type="submit"  ><span class="glyphicon glyphicon-plus-sign"></span>Add Product</button>
                 <!--                                <a class="btn btn-basic" type="button" style="width: 100px" >
                                                     <span class="glyphicon glyphicon-triangle-left" href="#!/supplier"></span> Back</a>-->

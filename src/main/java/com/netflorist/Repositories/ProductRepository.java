@@ -22,4 +22,5 @@ public interface ProductRepository extends CrudRepository<Product, Integer>{
 	public ArrayList<Product> viewByProductId(@Param("product_id") int product_id);
 
     public Product findByName(String prodName);
+   
 }

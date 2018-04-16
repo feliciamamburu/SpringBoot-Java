@@ -6,20 +6,11 @@
 package com.netflorist.Model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
-//import java.util.List;
-import javax.persistence.CascadeType;
-//import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-//import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -39,17 +30,15 @@ public class CustomerOrder implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date orderedDate;
     private int userId;
-    
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = ProductsCopy.class)
-    private Collection<ProductsCopy> prodsInCart = new ArrayList<ProductsCopy>();
+//    private int deliveryId;
 
     public CustomerOrder() {
     }
 
-    public CustomerOrder(int userId,  int quantity, double price, String status, Date orderedDate) {
+    public CustomerOrder(int userId, int quantity, double price, String status, Date orderedDate) {
 
         this.userId = userId;
+//        this.deliveryId = deliveryId;
 //        this.bankDetailId = bankDetailId;
         this.quantity = quantity;
         this.price = price;
@@ -73,6 +62,14 @@ public class CustomerOrder implements Serializable {
         return userId;
     }
 
+//    public int getDeliveryId() {
+//        return deliveryId;
+//    }
+//
+//    public void setDelivery_id(int deliveryId) {
+//        this.deliveryId = deliveryId;
+//    }
+
 //    public int getBankDetailId() {
 //        return bankDetailId;
 //    }
@@ -80,7 +77,6 @@ public class CustomerOrder implements Serializable {
 //    public void setBankDetailId(int bankDetailId) {
 //        this.bankDetailId = bankDetailId;
 //    }
-
     public int getQuantity() {
         return quantity;
     }
@@ -111,14 +107,6 @@ public class CustomerOrder implements Serializable {
 
     public void setOrderedDate(Date orderedDate) {
         this.orderedDate = orderedDate;
-    }
-
-    public Collection<ProductsCopy> getProdsInCart() {
-        return prodsInCart;
-    }
-
-    public void setProdsInCart(Collection<ProductsCopy> prodsInCart) {
-        this.prodsInCart = prodsInCart;
     }
 
 }

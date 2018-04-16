@@ -38,10 +38,6 @@ public class ProductController {
         prodService.addProduct(prod);
     }
     
-//    @RequestMapping(value = "/deleteProd")
-//    public void deleteProduct(@RequestBody Product prod){
-//        prodService.removeProd(prod);
-//    }
     
     @RequestMapping(value = "/deleteProd/{name}", method = RequestMethod.GET)
     public String deleteProd(@PathVariable("name") String prodName) {
@@ -52,12 +48,7 @@ public class ProductController {
         System.out.println("=========== " + message);
         return message;
     }
-    
-    
-    
-    
-    
-    
+
   @RequestMapping(method = RequestMethod.POST,value = "/updateProduct")
 	//@RequestBody converts JSON format to java object
 	//@PathVariable - identifies the path pattern used in URL for incoming data
@@ -66,8 +57,13 @@ public class ProductController {
 		prodService.updateProduct(product);
 	}
     
-    
- 
-    
-    
+        
+      @RequestMapping(method = RequestMethod.POST,value = "/supplier")
+	//@RequestBody converts JSON format to java object
+	//@PathVariable - identifies the path pattern used in URL for incoming data
+	public void updateQuantity(@RequestBody Product prod)
+	{
+		prodService.updateQuantity(prod);
+	}
+
 }

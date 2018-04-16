@@ -23,8 +23,9 @@ import org.springframework.stereotype.Repository;
 //Interfaces - collection of abstract classes
 public interface DeliveryRepository extends CrudRepository <Delivery, Integer>{
    // @Query - Used when I want to generate my own query
-    @Query("SELECT l FROM Delivery l WHERE l.delivery_id = :delivery_id")
+    @Query("SELECT l FROM Delivery l WHERE l.deliveryId = :deliveryId")
   //@Param - the values that will go to the @Query statement will be parameters
-	public ArrayList<Delivery> viewByDeliveryId(@Param("delivery_id") int delivery_id); 
-public Delivery findByStatus(String status);
+	public ArrayList<Delivery> viewByDeliveryId(@Param("deliveryId") int deliveryId); 
+
+    public Delivery findByDeliveryId(Integer deliveryId);
 }

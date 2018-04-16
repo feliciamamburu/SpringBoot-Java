@@ -24,11 +24,14 @@ public interface CustomersOrderRepository extends CrudRepository<CustomerOrder, 
 	//@Param - the values that will go to the @Query statement will be parameters
 	public ArrayList<CustomerOrder> findByOrderId(@Param("orderId") int orderId);
 
-        @Transactional
-        @Modifying
-        @Query("update CustomerOrder l set l.status = :status where l.orderId = :orderId")
-    public int updateStatus(@Param("orderId") int orderId, @Param("status") String status);
+//        @Transactional
+//        @Modifying
+//        @Query("update CustomerOrder l set l.status = :status where l.orderId = :orderId")
+//         public int updateStatus(@Param("orderId") int orderId, @Param("status") String status);
     
 
-         
+         public CustomerOrder findByOrderId(Integer orderId);
+
+ 
+
 }

@@ -21,7 +21,7 @@ import javax.persistence.Table;
 public class Delivery implements Serializable {
     @Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int delivery_id;
+	private int deliveryId;
 	private String province;
 	private String city;
 	private String houseNo;
@@ -32,20 +32,19 @@ public class Delivery implements Serializable {
 		
 	}
         
-	public Delivery(int delivery_id, String province, String city, String houseNo, String street, String status) {
+	public Delivery(int deliveryId, String province, String city, String houseNo, String street, String status) {
 		
-		this.delivery_id = delivery_id;
+		this.deliveryId = deliveryId;
                 this.province =province;
 		this.city = city;
 		this.street = street;
                 this.status = status;
 	}
 
-    public int getDelivery_id() {
-        return delivery_id;
+    public int getDeliveryId() {
+        return deliveryId;
     }
 
-  
 
     public String getProvince() {
         return province;
@@ -63,9 +62,11 @@ public class Delivery implements Serializable {
         return street;
     }
 
-    public void setDelivery_id(int delivery_id) {
-        this.delivery_id = delivery_id;
+    public void setDeliveryId(int deliveryId) {
+        this.deliveryId = deliveryId;
     }
+
+   
 
     public void setProvince(String province) {
         this.province = province;

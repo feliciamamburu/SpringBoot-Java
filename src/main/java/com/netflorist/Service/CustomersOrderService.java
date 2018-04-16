@@ -6,7 +6,7 @@
 package com.netflorist.Service;
 
 import com.netflorist.Model.CustomerOrder;
-import com.netflorist.Model.ProductsCopy;
+
 import com.netflorist.Repositories.CustomersOrderRepository;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,33 +16,29 @@ import org.springframework.stereotype.Service;
 
 /**
  *
- * @author 
+ * @author
  */
 @Service
 public class CustomersOrderService {
-    
-    HashMap map = new HashMap();
-    private  CustomerOrder cOrderObj;
-    
-   
-    
+
+//    HashMap map = new HashMap();
+//    private CustomerOrder cOrderObj;
+
     @Autowired
     private CustomersOrderRepository customersOrderRepository;
-    
-    private List<CustomerOrder> customerOrders= new ArrayList<>();
-    
-    List<ProductsCopy> productsCopyList = new ArrayList<ProductsCopy>();
-    
-    public List<CustomerOrder> findAllcustomerOrders()
-    {
+
+    private List<CustomerOrder> customerOrders = new ArrayList<>();
+
+
+    public List<CustomerOrder> findAllcustomerOrders() {
         customerOrders = new ArrayList<>();
         customersOrderRepository.findAll().forEach(customerOrders::add);
-        return customerOrders; 
+        return customerOrders;
     }
-    
-    public void saveCustomerOrder(CustomerOrder  customerOrders){
+
+    public void saveCustomerOrder(CustomerOrder customerOrders) {
         CustomerOrder cOrderObj = new CustomerOrder();
-        
+
         cOrderObj.setUserId(customerOrders.getUserId());
 //        cOrderObj.setBankDetailId((int) customerOrders.getBankDetailId());
         cOrderObj.setQuantity(customerOrders.getQuantity());
@@ -51,29 +47,46 @@ public class CustomersOrderService {
         cOrderObj.setOrderedDate(customerOrders.getOrderedDate());
         customersOrderRepository.save(cOrderObj);
     }
-    
-    
-//    public HashMap upDateOrderStatus(CustomerOrder order) {
-//
-//        CustomerOrder statusOrder = customersOrderRepository.findOne(order.getOrderId());
-//
-//        if (statusOrder.getOrderId()== order.getOrderId() ) {
-//           customersOrderRepository.save(order);
-//            message = "Order For: " + statusOrder.getStatus()+ " Have Been Changed To " + order.getStatus();
-//            status = "success";
-//        }
-//        map.put("status", status);
-//        map.put("message", message);
-//        return map;
-//    }
 
-    public int updateStatus(int orderID, String statusId)
-    {
-        return customersOrderRepository.updateStatus(orderID, statusId);
+
+ 
+
+    public void updateStatus(CustomerOrder status) {
+        customersOrderRepository.save(status);
     }
-    
 
-    
+        
+  
 
-   
+    public String deleteOrder(Integer orderId) {
+        
+         List<CustomerOrder> list = new ArrayList<>();
+        
+        
+        Iterable<CustomerOrder> findAll = customersOrderRepository.findAll();
+        findAll.forEach(list::add);
+        
+        int sizeBefore = list.size();
+        
+       
+        CustomerOrder order = customersOrderRepository.findByOrderId(orderId);
+          
+        
+       customersOrderRepository.delete(order);
+        
+        Iterable<CustomerOrder> findAllAfter = customersOrderRepository.findAll();
+        findAllAfter.forEach(list::add);
+        
+        int sizeAfter = list.size();
+        
+        if(sizeAfter <sizeBefore ){
+            return "Deleted";
+        }else{
+            return "Fail to delete";
+        }
+    }
+
+ 
+     
+     
 }

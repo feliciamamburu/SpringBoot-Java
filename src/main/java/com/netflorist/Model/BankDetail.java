@@ -6,38 +6,36 @@
 package com.netflorist.Model;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+
 
 /**
  *
  * @author 
  */
 @Entity
-public class BankDetails implements Serializable  {
+public class BankDetail implements Serializable  {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int bankDetailId;
     private String bankType;
     private String accNo;
-    private String secretPin;
-    private double bankBalance;
+    private String pin;
+  
 
-    public BankDetails() {
+    public BankDetail() {
     }
 
-    public BankDetails(String bankType, String accNo, String secretPin, double bankBalance) {
+    public BankDetail(String bankType, String accNo, String pin) {
         
        
         this.bankType = bankType;
         this.accNo = accNo;
-        this.secretPin = secretPin;
-        this.bankBalance = bankBalance;
+        this.pin = pin;
+      
     }
 
     
@@ -67,27 +65,25 @@ public class BankDetails implements Serializable  {
         this.accNo = accNo;
     }
 
-    public String getSecretPin() {
-        return secretPin;
+    public String getPin() {
+        return pin;
     }
 
-    public void setSecretPin(String secretPin) {
-        this.secretPin = secretPin;
+    public void setPin(String pin) {
+        this.pin = pin;
     }
 
-    public double getBankBalance() {
-        return bankBalance;
+    public Object pin() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void setBankBalance(double bankBalance) {
-        this.bankBalance = bankBalance;
-    }
     
-    
-    
-    
-    
-    
+
+   
+
+  
+
+   
     
     
 }

@@ -74,6 +74,15 @@ public class ProductService {
 	}
         
      
+        public void updateQuantity(Product prod) {
+		prodRep.save(prod);
+		
+	}
+        
+       
+        
+        
+   
         
 }
   

@@ -1,7 +1,7 @@
 
 package com.netflorist.RestController;
 
-import com.netflorist.Model.BankDetails;
+import com.netflorist.Model.BankDetail;
 import com.netflorist.Service.BankingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -22,12 +22,12 @@ public class BankingController {
     BankingService bankService;
     
     @RequestMapping(value="/bank",method=RequestMethod.POST)
-    public void placeBANK(@RequestBody BankDetails bankID){
+    public void placeBANK(@RequestBody BankDetail bankID){
         bankService.saveBank(bankID);
     }
      
     @RequestMapping(method = RequestMethod.GET, value = "/pay",produces = {MediaType.APPLICATION_JSON_VALUE})
-    public BankDetails accessBank(@RequestParam String bankType,String accNo, String pin) {
+    public BankDetail accessBank(@RequestParam String bankType,String accNo, String pin) {
         return bankService.pay(bankType,accNo, pin);
     }
 }

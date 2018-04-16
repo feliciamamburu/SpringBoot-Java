@@ -78,8 +78,7 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-left">
                     <li class="active"><a href="#">Home</a></li>
-                    <!--                    <li><a href="#about">About us</a></li>
-                                        <li><a href="#contact">Contact</a></li>-->
+
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a  onclick="document.getElementById('id01').style.display = 'block'"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart: {{cart.length}}</a></li>
@@ -98,15 +97,15 @@
         <div class="card text-xs-center">  <img ng-src="/stock/{{prod.image}}" style="width:120px; height: 150px;"/>
             <h5 class="card-title" > {{prod.name}}</h5>
             <h5> {{prod.description}}</h5>
-            <h5 style="color:#E45E9D"> {{prod.category}}</h5>
+<!--            <h5 style="color:#E45E9D"> {{prod.category}}</h5>-->
             <p class="card-text price" style="font-weight: bold">{{prod.price | currency : "R"}}</p>
-
+<!--            <h5  type="hidden" style="color:#E45E9D"> {{prod.prod_quantity - prod.quantity}}</h5>-->
             <button type="submit" class="btn btn-basic" ng-click="addToCart(prod)()"  value="#!/register" style="font-size: 12px;width: 150px;">Add To Cart</button>
         </div>
     </div>
-    
+
 </div>
-  
+
 
 
 
@@ -209,11 +208,12 @@
 
                 <div class="container" style="background-color:pink; width:100%">
                     <h4> Delivery Details<i class="fa fa-truck"></i></h4>
-                    <div class="row">
+                    <div class="row" >
+                        <form ng-submit="deliver()" >
                         <div class="col-sm-4" style="margin-top:5%">
                             <div class="wrapper" style="margin-left: 10px;width: 500px">
                                 <label style="font-size: 12px;margin-left: 10px">Province: </label>
-                                <select  required="" ng-model="delivery.province">
+                                <select  required="" ng-model="province">
                                     <option value="" selected="" >--Select Province--</option>
                                     <option value="gauteng">Gauteng</option>
                                     <option value="limpopo">Limpopo</option>
@@ -227,7 +227,7 @@
                             <label style="font-size: 12px;margin-left: 30px">City: </label>
                             <div class="form-group">
                                 <div class="col-lg-10">
-                                    <input type="text" class="form-control" id="city" ng-model="delivery.city" placeholder="city" style="width: 340px"   required=""/>
+                                    <input type="text" class="form-control" id="city" ng-model="city" placeholder="city" style="width: 340px"   required=""/>
                                 </div>
                             </div>
                         </div><br/>
@@ -235,7 +235,7 @@
                             <label style="font-size: 12px;margin-left: 30px">House number: </label>
                             <div class="form-group">
                                 <div class="col-lg-10">
-                                    <input type="number" class="form-control" id="houseNo" ng-model="delivery.houseNo" placeholder="house number" style="width: 340px"   required=""/>
+                                    <input type="number" class="form-control" id="houseNo" ng-model="houseNo" placeholder="house number" style="width: 340px"   required=""/>
                                 </div>
                             </div>
                             <br/>
@@ -244,23 +244,23 @@
                             <label style="font-size: 12px;margin-left: 30px">Street Name: </label>
                             <div class="form-group">
                                 <div class="col-lg-10">
-                                    <input type="street" class="form-control" id="street" ng-model="delivery.street" placeholder="street" style="width: 340px"   required=""/>
+                                    <input type="street" class="form-control" id="street" ng-model="street" placeholder="street" style="width: 340px"   required=""/>
                                 </div>
                             </div>
                         </div>
                         <br/>
 
 
-                        <button class="btn btn-danger" ng-click="deliver()" style="margin-left:70%">Save</button>
-                        <button type="button" class="btn btn-default" >
+<!--                        <button class="btn btn-danger" ng-click="deliver()" style="margin-left:70%">Save</button>-->
+                        <button type="button" class="btn btn-default" style="margin-left:70%">
                             <span onclick="document.getElementById('id04').style.display = 'none'" class="glyphicon glyphicon-triangle-left">Back</span>
                         </button>
 
 
-                        <button type="button" class="btn btn-success" onclick="document.getElementById('id02').style.display = 'block'" >
+                        <button type="submit"   ng-click="checkOut(prod)" class="btn btn-success"  onclick="document.getElementById('id02').style.display = 'block'" >
                             Checkout <span class="glyphicon glyphicon-play"></span>
                         </button>
-
+                        </form>
 
                     </div>
 
@@ -278,7 +278,7 @@
     <div id="id02" class="w3-modal " >
         <div class="w3-modal-content w3-animate-zoom" >
 
-           
+
 
             <br/>
             <div class="w3-container" >
@@ -303,7 +303,7 @@
                     <label style="font-size: 12px;margin-left: 30px">Account Number: </label>
                     <div class="form-group">
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" id="bankName" ng-model="bank.accNo" placeholder="09876545645" style="width: 340px"   required=""/>
+                            <input type="number" class="form-control" id="bankName" ng-model="bank.accNo" placeholder="09876545645" style="width: 340px"   required=""/>
                         </div>
                     </div><br/>
 
@@ -350,10 +350,20 @@
                         <span onclick="document.getElementById('id03').style.display = 'none'" class="glyphicon glyphicon-triangle-left">Back</span>
                     </button>
 
+                    
+<!--                     <button type="button"  class="btn btn-success"  ng-click="placeOrder()">
+                        Finish <span class="glyphicon glyphicon-play" ></span>
+                    </button>-->
+                    
+                    
                     <button type="button"  class="btn btn-success"  ng-click="placeOrder()"  onclick="document.getElementById('i').style.display = 'block'" >
                         Finish <span class="glyphicon glyphicon-play" ></span>
                     </button>
 
+<!--                    <button type="button"  class="btn btn-success"  ng-click="updateProdQty(prod)">
+                        Continue Shopping<span class="glyphicon glyphicon-play" ></span>
+                    </button>-->
+                    
                 </div><br/>
             </div>
         </div>
@@ -375,7 +385,7 @@
                         <tr>
                             <th>OrderID</th>
                             <th>CustID</th>
-                            <th>Bank id</th>
+
                             <th>Order Date</th>
                             <th>Price</th>
                             <th>Quantity</th>
@@ -388,15 +398,17 @@
                         <tr ng-show="order in customerOrder">
                             <td>{{order.orderId}}</td>
                             <td>{{order.userId}}</td>
-                            <td>{{order.bank_detail_id}}</td>
+
                             <td>{{order.orderedDate}}</td>
                             <td>{{order.price | currency : "R" }}</td>
                             <td>{{order.quantity}}</td>
                             <td>{{order.status}}</td>
 
+                    
+                    
                         </tr>
 
-
+                         
                     </tbody>
                 </table>
             </div>
